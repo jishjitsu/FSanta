@@ -1,0 +1,51 @@
+Object obj = new Object();
+
+obj is a reference to the Object
+
+A string is immutable
+
+but String a = "kmit";
+a = "ngit";
+this changes the reference in the string pool, as memory is stored in the heap.
+Hence strings can be changed as a whole by switching reference but not in parts.
+
+A single Java file can have multiple executable classes, as once we compile a java files multiple classes are compiled together.
+We have executable and non executable classes in java, any class with a main method is called an executable class.
+
+Encapsulation - we see a java file is a combination of classes, methods and variables.
+
+An object is an instance of a class.
+A class is a blueprint of an object.
+
+Polymorphism is seen as the ability of a method to display multiple properties, through method overriding and overloading.
+
+Inheritance is seen as the ability of a class to propagate, allow another class to inherit the methods and properties of the previous class.
+Done by using  class subclass extends baseclass, super.attribute is used to call onto an immediate parent.
+Useful in not disrupting code which is tested and deployed, by just inheriting.
+
+Abstraction is done by using private public and protected keywords
+
+There are two types of polymorphism in Java:
+compile-time polymorphism.(method overloading)
+runtime polymorphism.(method overriding)
+
+
+Instance and local variables: inside class, inside method, instance variables have default values and local vars dont.
+
+class is a collection of state and behavior
+
+static variables of the print stream: in out error
+
+methods cant be imported
+
+reverse domain used for building package
+
+javac -d . file.java- compiling a package
+
+Constructor, name is same as class, used to create objects, called once an object is created
+
+parameterized, default and copy constructors are available in java
+
+
+
+
