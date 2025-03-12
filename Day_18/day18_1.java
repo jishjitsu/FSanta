@@ -44,27 +44,57 @@ Output:
 ----------
 1 2 2 1 1 2 1 2 2 1 2 1 1 2 2 */
 
-//Laudala approach
-
 import java.util.*;
-
-public class day18_1{
-    
-    public static void main(String[] args){
-        Scanner sc = new Scanner(System.in);
-        int a = sc.nextInt();
-        List<Integer> l =new ArrayList<>();
-        l.add(1);
-        l.add(2);
-        l.add(2);
-        for(int i=2;i<a;i++){
-            int val = (l.get(i)%2==0) ? 2: 1;
-            for(int j=0; j<val; j++){
-                l.add(val);
-            }
+class sol
+{
+  public static void main(String args[])
+ {
+    Scanner sc=new Scanner(System.in);
+    int n=sc.nextInt();
+    System.out.println(pattern(n));
+ }
+ public static String pattern(int n)
+ {
+    StringBuilder sb=new StringBuilder();
+    String s="1 2 2 1";
+    int i=0;
+    String s1="1 2";
+    String s2="2 1";
+    boolean t=true;
+    while(i<n)
+    {
+        String [] temp=s.split(" ");
+        for(String num:temp)
+    {
+        if(i<n)
+        {
+            sb.append(num).append(" ");
+            i++;
         }
-        for(int i=0;i<a;i++){
-            System.out.print(l.get(i)+" ");
+        else
+        {
+            break;
         }
     }
+    if(i<n)
+    {
+        String nums[]=t?s1.split(" "):s2.split(" ");
+        for(String num:nums)
+        {
+            if(i<n)
+            {
+                sb.append(num).append(" ");
+                i++;
+            }
+            else 
+            {
+                break;
+            }
+        }
+    }
+    t=!t;
+}
+return sb.toString();
+}
+
 }
