@@ -1,68 +1,57 @@
-/*Mr. Param is working with Strings.
-He is given a String S. He has to find the palindromes in S, 
-A palindrome can be a substring of S (Strictly substrings only, not subsequences).
+/*You are given an array consisting of N integers, and an integer, K. 
+Your task is to determine the minimum element in subarrays of size K.
 
-Your task is to find the count the number of palindromes can be formed from S.
-
-NOTE: Count each occurence of palindromes if duplicate substrings found. 
-
-Input Format:
--------------
-A string S
-
-Output Format:
+Sample Input1:
 --------------
-Print an integer, number of palindromes.
+5
+10 12 14 11 15
+3
 
-Sample Input-1:
+Sample Output1:
 ---------------
-divider
+10 11 11
 
-Sample Output-1:
-----------------
-9
+Sample Input2:
+--------------
+5
+5 2 1 1 1
+4
 
-Explanation:
--------------
-Palindromes are d, i, v, i, d, e, r, ivi, divid
-
-Sample Input-2:
+Sample Output2:
 ---------------
-abcdef
-
-Sample Output-2:
-----------------
-6
-
-Explanation:
--------------
-Palindromes are a, b, c, d, e, f.
-*/
+1 1*/
 
 import java.util.*;
-public class Sol{
-    public static void main(String[] args){
+
+public class day3_3{
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String a = sc.nextLine();
-        int c = a.length();
-        StringBuilder sb = new StringBuilder(a);
-        for(int i=0;i<a.length();i++){
-            for(int j=i+1;j<a.length();j++){
-            if(palindrome(sb.substring(i,j+1))){
-                c+=1;
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for(int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        int k = sc.nextInt();
+
+        Deque<Integer> dq = new LinkedList<>();
+
+        for(int i = 0; i < n; i++) {
+            // Remove indices out of current window
+            while(!dq.isEmpty() && dq.peekFirst() <= i - k) {
+                dq.pollFirst();
+            }
+
+            // Remove elements from back that are greater than current
+            while(!dq.isEmpty() && arr[dq.peekLast()] >= arr[i]) {
+                dq.pollLast();
+            }
+
+            dq.offerLast(i);
+
+            // Window has reached size k, add to result
+            if(i >= k - 1) {
+                System.out.print(arr[dq.peekFirst()] + " ");
             }
         }
-        }
-        System.out.println(c);
-    }
-    
-    public static boolean palindrome(String a){
-        char[] c = a.toCharArray();
-        boolean f = false;
-        for(int i=0;i<c.length;i++){
-            if(c[i]==c[c.length-i-1]) f=true;
-            else return false;
-        }
-        return f;
     }
 }
